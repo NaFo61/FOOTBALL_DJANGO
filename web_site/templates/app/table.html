@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ table_name }}
+{% endblock %}
+
+{% block body %}
+{% load static %}
+
+<div style="margin: 80px; margin-top: 50px;">
+  <table class="table table-striped">
+    <div class="text-box">
+      <a href="{% url 'app:tables' %}" class="btn btn-white btn-animate btn-outline-primary" style="width: 180px;">Назад</a>
+      {% if request.user.is_authenticated  %}
+        <a href="{% url 'app:add' table %}" class="btn btn-white btn-animate btn-outline-primary" style="margin-left: 200px; width: 180px;">Добавить</a>
+      {% endif %}
+    </div>
+    <h1 style="text-align: center; margin-bottom: 40px;">Таблица: <b>{{ table_name }}</b></h1>
+    <thead>
+      <tr>
+        {% for field_name in fields %}
+        <th scope="col">{{ field_name }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        {% for val in row.get_values %}
+        <td>{{ val }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

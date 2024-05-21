@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+tables
+{% endblock %}
+
+{% block body %}
+{% load static %}
+<div style="margin: 80px; margin-top: 50px;">
+  <div class="list-group">
+    {% for table in tables %}
+    <a href="{{ table.url }}" class="list-group-item list-group-item-action" aria-current="true">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Таблица: {{ table.name }} {{ outer_loop }}</h5>
+        <small>{{ table.count }}</small>
+      </div>
+      <p class="mb-1">{{ table.description }}</p>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

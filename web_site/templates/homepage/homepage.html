@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+homepage
+{% endblock %}
+
+{% block body %}
+{% load static %}
+
+<section style="width: 900px; height: 60vh; margin: auto; margin-top: 90px;">
+  <div style="display: flex; justify-content: space-between;">
+    <div style="width: 60%;">
+    <h1 style="font-size: 50px; font-weight: bold;">Футбольный аналитик</h1>
+    <p style="font-size: 20px;">Приложение позволяет добавлять команды, игроков и их статистику. Благодаря простому и интуитивно понятному интерфейсу пользователи могут легко организовывать свою работу и следить за футбольными событиями</p>
+    <div style="margin-top: 40px;">
+      <a class="btn btn-outline-primary" href="{% url 'app:tables' %}">Таблицы</a>
+    </div>
+    </div>
+    <div style="">
+      <img src="{% static 'img/image.png' %}" style="object-fit: cover; width: 320px; height: 320px;">
+    </div>
+  </div>
+</section>
+
+{% endblock %}
